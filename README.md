@@ -1,2 +1,2 @@
 # devhub-kotlin
-Simple Springboot 2 project developed in Kotlin
+Simple Spring Boot 2 based application that exposes a service, developed in Kotlin, allowing the encryption of data using Galois/Counter Mode (GCM).

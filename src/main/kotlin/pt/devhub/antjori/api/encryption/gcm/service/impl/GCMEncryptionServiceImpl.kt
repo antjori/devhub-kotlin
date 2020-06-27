@@ -1,7 +1,7 @@
-package pt.devhub.antjori.api.gcm.service.impl
+package pt.devhub.antjori.api.encryption.gcm.service.impl
 
 import org.springframework.stereotype.Service
-import pt.devhub.antjori.api.gcm.service.EncryptionService
+import pt.devhub.antjori.api.encryption.gcm.service.GCMEncryptionService
 
 /**
  * The encryption service implementation.
@@ -9,7 +9,7 @@ import pt.devhub.antjori.api.gcm.service.EncryptionService
  * @author antjori
  */
 @Service
-class EncryptionServiceImpl : EncryptionService {
+class GCMEncryptionServiceImpl : GCMEncryptionService {
 
     /**
      * Encrypts the given {@code text}.

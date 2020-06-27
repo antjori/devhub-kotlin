@@ -1,4 +1,4 @@
-package pt.devhub.antjori.api.gcm.controller
+package pt.devhub.antjori.api.encryption.gcm.controller
 
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.responses.ApiResponse
@@ -11,17 +11,18 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
-import pt.devhub.antjori.api.gcm.service.EncryptionService
+import pt.devhub.antjori.api.encryption.gcm.service.GCMEncryptionService
 
 /**
- * Encryption controller responsible for exposing the available REST API.
+ * GCM encryption controller responsible for exposing the available REST API.
  *
  * @author antjori
  */
 @RestController
 @RequestMapping(value = ["/gcm-encryption/v1"])
-@Tag(name = "GCM Encryption", description = "The GCM Encryption service API")
-class EncryptionControllerV1(val encryptionService: EncryptionService){
+@Tag(name = "GCM Encryption API", description = "A RESTful service that allows the encryption/decryption according to" +
+        " the Galois/Counter Mode cryptographic algorithm.")
+class GCMEncryptionControllerV1(val encryptionService: GCMEncryptionService) {
 
     @Operation(summary = "GCM encryption service", description = "Allows the encryption of a given text", method = "GET", tags = ["GCM Encryption", "encryption"])
     @ApiResponses(value = [

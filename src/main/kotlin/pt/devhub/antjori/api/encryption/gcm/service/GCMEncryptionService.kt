@@ -1,11 +1,11 @@
-package pt.devhub.antjori.api.gcm.service
+package pt.devhub.antjori.api.encryption.gcm.service
 
 /**
  * The encryption service interface.
  *
- * @author ribeiant
+ * @author antjori
  */
-interface EncryptionService {
+interface GCMEncryptionService {
 
     /**
      * Encrypts the given `text`.

@@ -1,4 +1,4 @@
-package pt.devhub.antjori.api.gcm.configuration
+package pt.devhub.antjori.api.encryption.configuration
 
 import io.swagger.v3.oas.models.Components
 import io.swagger.v3.oas.models.OpenAPI
@@ -23,9 +23,9 @@ class OpenApiConfiguration {
     @Bean
     fun customOpenApi(@Value("\${springdoc.version}") appVersion: String): OpenAPI =
             // @formatter:off
-            OpenAPI().info(Info().title("GCM Encryption API").version(appVersion)
-                    .description("A RESTful service that allows the encryption/decryption according to the " +
-                            "Galois/Counter Mode cryptographic algorithm."))
+            OpenAPI().info(Info().title("Encryption API").version(appVersion)
+                    .description("Encryption API that expose a set of encryption services. E.g: " +
+                            "Galois/Counter Mode (GCM) cryptographic algorithm."))
             .components(
                 Components().addSecuritySchemes(
                     "basicScheme",

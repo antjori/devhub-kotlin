@@ -1,0 +1,64 @@
+server:
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/xml,text/plain
+  servlet:
+    contextPath: /${spring.application.name}
+  port: ${PORT:8081}
+
+# Config-Server health check should be disabled unless @RefreshScope is used
+health:
+  config:
+    enabled: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+      base-path: /admin
+  endpoint:
+    health:
+      show-details: when_authorized
+
+springdoc:
+  version: 1.0
+  api-docs:
+    path: /api-docs
+
+spring:
+  security:
+    user:
+      name: actuator
+      password: actuator
+  application:
+    name: "@project.name@"
+    version: "@project.version@"
+    description: DevHub Encryption API
+    majorVersion: ${APP_VERSION:1}
+
+info:
+  build:
+    artifact: "@project.artifactId@"
+    name: "@project.name@"
+    description: "@project.description@"
+    version: "@project.version@"
+
+logging:
+  level:
+    pt.devhub.antjori.api.encryption: DEBUG
+
+# encryption
+encryption:
+  security:
+    user:
+      name: devhub-encryption
+      password: devhub-encryption
+    realm: "@project.name@"
+
+# gcm-encryption
+gcm-encryption:
+  keysetfile: classpath:keysethandle.json
+  secure-random-instance: SHA1PRNG
+  iv-size: 12
+  separator: "~"

@@ -61,4 +61,4 @@ gcm-encryption:
   keysetfile: classpath:keysethandle.json
   secure-random-instance: SHA1PRNG
   iv-size: 12
-  separator: ~
+  separator: "~"

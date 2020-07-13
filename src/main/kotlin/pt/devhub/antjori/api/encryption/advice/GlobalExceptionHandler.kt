@@ -5,9 +5,10 @@ import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice
+import org.springframework.web.context.request.ServletWebRequest
 import org.springframework.web.context.request.WebRequest
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler
-import pt.devhub.antjori.api.encryption.exception.EncryptionException
+import javax.servlet.http.HttpServletRequest
 
 /**
  * Provides a centralized exception handling across all encryption
@@ -33,8 +34,14 @@ class GlobalExceptionHandler : ResponseEntityExceptionHandler() {
      *            the request that led to the exception
      * @return Exception response
      */
-    @ExceptionHandler(EncryptionException::class)
-    fun handleRestOperationException(exception: EncryptionException, request: WebRequest): ResponseEntity<Any> =
-            handleExceptionInternal(exception, exception.message, HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR,
-                    request)
+    @ExceptionHandler(Exception::class)
+    fun handleRestOperationException(exception: Exception, request: ServletWebRequest): ResponseEntity<Any> {
+        // TODO log exception
+        var errorMessage = "An error occurred while trying to "
+
+        errorMessage += if (request.request.requestURI.endsWith("encrypt")) "encrypt" else "decrypt"
+
+        return handleExceptionInternal(exception, errorMessage, HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR,
+                request)
+    }
 }

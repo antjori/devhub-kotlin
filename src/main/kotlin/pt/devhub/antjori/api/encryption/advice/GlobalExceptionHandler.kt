@@ -1,5 +1,6 @@
 package pt.devhub.antjori.api.encryption.advice
 
+import mu.KotlinLogging
 import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -21,6 +22,8 @@ import javax.servlet.http.HttpServletRequest
  *
  * @author antjori
 */
+private val logger = KotlinLogging.logger {}
+
 @RestControllerAdvice
 class GlobalExceptionHandler : ResponseEntityExceptionHandler() {
 
@@ -36,10 +39,11 @@ class GlobalExceptionHandler : ResponseEntityExceptionHandler() {
      */
     @ExceptionHandler(Exception::class)
     fun handleRestOperationException(exception: Exception, request: ServletWebRequest): ResponseEntity<Any> {
-        // TODO log exception
         var errorMessage = "An error occurred while trying to "
 
         errorMessage += if (request.request.requestURI.endsWith("encrypt")) "encrypt" else "decrypt"
+
+        logger.warn(errorMessage, exception)
 
         return handleExceptionInternal(exception, errorMessage, HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR,
                 request)

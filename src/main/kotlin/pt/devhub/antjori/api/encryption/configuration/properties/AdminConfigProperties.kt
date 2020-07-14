@@ -12,12 +12,12 @@ import org.springframework.context.annotation.Configuration
 @Configuration
 @ConfigurationProperties(prefix = "spring.security.user")
 data class AdminConfigProperties(
-        /**
+    /**
      * Admin role name.
      */
     var name: String = StringUtils.EMPTY,
 
-        /**
+    /**
      * Admin role password.
      */
     var password: String = StringUtils.EMPTY

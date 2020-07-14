@@ -17,7 +17,7 @@ data class UserConfigProperties(
      */
     var name: String = StringUtils.EMPTY,
 
-        /**
+    /**
      * User role password.
      */
     var password: String = StringUtils.EMPTY

@@ -5,14 +5,12 @@ import com.google.crypto.tink.CleartextKeysetHandle
 import com.google.crypto.tink.JsonKeysetReader
 import com.google.crypto.tink.KeysetHandle
 import com.google.crypto.tink.aead.AeadConfig
-import org.apache.commons.lang3.CharSet
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.core.io.Resource
 import org.springframework.stereotype.Service
 import pt.devhub.antjori.api.encryption.gcm.service.GCMEncryptionService
-import java.nio.charset.Charset
 import java.security.SecureRandom
-import java.util.Base64
+import java.util.*
 import javax.annotation.PostConstruct
 
 /**
